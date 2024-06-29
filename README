@@ -1,0 +1,15 @@
+Kernel Module to Enable or Disable the RDPMC Instruction in User Space.
+
+Build:
+make
+
+Install:
+sudo insmod usrpmc.ko
+sudo rmmod usrpmc.ko
+sudo dmesg | tail
+
+Usage:
+taskset -c 3 cat /proc/usrpmc #read cr4 register
+taskset -c 3 echo 1 > /proc/usrpmc #enable RDPMC Instruction in User Space
+taskset -c 3 echo 0 > /proc/usrpmc #disable RDPMC Instruction in User Space
+
